@@ -1,0 +1,44 @@
+<html
+>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+<body>
+<div id="bloque">
+<div id="login" align="right" >  <form action="" method="post">Login:
+          <input type="text" name="text" size="30">
+        </form></div>
+<div id="logo" align="center" > <img src="/static/jpg/logo_avici.jpg" height="170" width="400"></img></div>
+<div id="info">Información de todos los sistemas y menú de acceso al detalle de cada uno de ellos. <br>
+Se podrá pulsar en cada ciudad para visitar los datos particulares. </div>
+<div id="inforight"><script type="text/javascript" src="/static/js/Funciones.js"></script>	</div>
+<div id="tabla"></div>
+<div id="links" ><a href='/compa'>Gráficas Comparativas</a></div>
+</div>
+
+ <div id="results">
+ 
+ <table style="width:100%">
+  <tr>
+    <th>Servicio</th>
+    <th>Precio Base</th> 
+    <th>Suplemento</th>
+	<th>Extendido</th>
+	<th>Datos Online</th>
+  </tr>
+    {% for item in items %}
+  <tr>
+    <td><a href="/servicio/{{item.nombre}}">{{item.nombre}}</a></td>
+    <td>{{item.Precio1}}</td> 
+    <td>{{item.Precio2 }}( {{item.Desc2}} )</td>
+	<td>{{item.Precio3 }}( {{item.Desc3}} )</td>
+	<td>{{item.Online}}</td>
+  </tr>
+    {% endfor %}
+</table>
+ 
+
+ </div>
+  
+
+</body>
+</html>

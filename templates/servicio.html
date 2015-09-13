@@ -1,0 +1,50 @@
+<html>
+<meta charset="utf-8">
+<head>
+            {{sndmap.js}}
+<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+
+</head>
+<body>
+
+<div id="bloque">
+<div id="login" align="right" >  <form action="" method="post">Login:
+          <input type="text" name="text" size="30">
+        </form></div>
+
+
+<div id="logo" align="center" > <img src="/static/jpg/logo_avici.jpg" height="100" width="250"></img></div>
+<div id="ciudad">{{datos_servicio}}</div>
+<div id="info">Esta gráfica muestra el estado de las estaciones de una ciudad concreta con posibilidad de ver como cambia el estado a través del tiempo </div>
+
+ <h2> Datos Actuales de Uso</h2></div>
+
+<div id="leyenda">
+<table>
+  <tr>
+    <th>Icono</th>
+    <th>Descripción</th> 
+  </tr>
+  <tr>
+    <td><img src="/static/jpg/red.png" height="32" width="32"></td>
+    <td>Disponibilidad de bicicletas menor de {{porc}}% </td> 
+  </tr>
+  <tr>
+    <td><img src="/static/jpg/blue.png" height="32" width="32"></td>
+    <td>Disponibilidad de huecos menor de {{porc}}% </td> 
+  </tr>
+    <tr>
+    <td><img src="/static/jpg/green.png" height="32" width="32"></td>
+    <td>Estado correcto</td> 
+  </tr>
+</table>
+</div>
+<div id="mapa">
+
+        {{sndmap.html}}
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+div#bloque {    
+    margin: auto;
+    width: 90%;        
+}
+
+div#logo {
+    position: relative; top:70px;	
+}
+div#logo2 {
+    position: relative; top:200px;	
+}
+div#login {
+    position: relative; right: 0px;
+	
+}
+
+div#info {
+    padding: 10;
+	background-color: #D6EBEF;
+	margin: auto;
+	position: relative; top:100px; width: 400px; 
+	text-align: center;
+}
+
+div#mapa {
+    padding: 10;
+	background-color: #D6EBEF;
+	margin: auto;
+	position: relative; top:100px; width: 800px; 
+	text-align: center;
+}
+
+div#inforight {
+    padding: 10;
+	background-color: #D6EBEF;
+	margin-right: 0px;
+	position: absolute; top:300px; width: 400px; 	
+	text-align: right;
+}
+
+div#ciudad {
+    padding: 10;
+	background-color: #D6EBFF;
+	margin: auto;
+	position: relative; top:100px; width: 400px; 
+	text-align: center;
+}
+
+
+
+body {
+    font-family: "helvetica";
+	font-size:15px;
+}
+
+
+div#links {
+	padding: 10;
+    position: relative; top:150px;
+    height: 30px; width: 200px; 
+	background-color: #D6EBEF;
+	margin: auto;
+	text-align:center;
+	}
+	
+table {
+    position: relative; top:125px;
+    margin:auto;    
+	text-align:center;
+				border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif;
+            }
+
+            td {
+                border: 1px black solid;
+                padding: 5px;
+            }
+div#leyenda {
+    padding: 10;
+	background-color: #D6EBFF;
+	margin: auto;
+	position: absolute; top:200px; right:100px;
+	text-align: center;
+}
