@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Comparativa de Servicios</title>
+    <link class="include" rel="stylesheet" type="text/css"
+          href="/static/js/jquery.jqplot.min.css" />
+
+    <script class="include" type="text/javascript"
+            src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+{% for item in items %}
+    <div id={{item.nombre}} style="height:300px; width:650px;"></div>
+    <script class="code" type="text/javascript">
+        $(document).ready(function(){
+            $.getJSON('/_datos_total/{{item.nombre}}',function (data) {               
+               $.jqplot('{{item.nombre}}', [data.output], {
+                    title:'Estado de las estaciones: {{item.nombre}}'
+                });
+            });
+        });
+    </script>
+ {% endfor %}	
+    <script class="include" type="text/javascript"  src="/static/js/jquery.jqplot.min.js"></script>
+	<script class="include" language="javascript" type="text/javascript" src="/static/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
+    
+</body>
+</html>
