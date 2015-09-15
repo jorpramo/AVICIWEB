@@ -29,4 +29,12 @@ class servicios:
             items=datos.find({"nombre":nombre})
         return items
 
+    def obtencoordenadas(self, nombre=''):
+        client = pymongo.MongoClient(MONGODB_URI)
+        db = client.avici
+        datos=db.datos
+
+        pipeline = [ {"$match":{"nombre": nombre}},{ "$group": { "_id": { "nombre": "$nombre", "estacion": "$estacion" }, "disp": {"$avg": "$disponibles" }, "lib": { "$avg": "$libres" }, "total": { "$avg": "$total" } } } ]
+
+        return list(datos.aggregate(pipeline))
 
