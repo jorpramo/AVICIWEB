@@ -82,4 +82,5 @@ def servicio(nombre):
 
     return render_template('servicio.html', datos_servicio=ciudad, sndmap=sndmap,porc=porc)
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
