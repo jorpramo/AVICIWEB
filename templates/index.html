@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="/static/css/layout.css" type="text/css" media="screen">   
+		<script src="/static/js/jquery-1.6.3.min.js" type="text/javascript"></script>
+		<script src="/static/js/cufon-yui.js" type="text/javascript"></script>
+		<script src="/static/js/cufon-replace.js" type="text/javascript"></script>
+		<script src="/static/js/NewsGoth_400.font.js" type="text/javascript"></script>
+		<script src="/static/js/NewsGoth_700.font.js" type="text/javascript"></script>
+		<script src="/static/js/Vegur_300.font.js" type="text/javascript"></script> 
+		<script src="/static/js/FF-cash.js" type="text/javascript"></script>
+		<script src="/static/js/jquery.easing.1.3.js" type="text/javascript"></script>
+		<script src="/static/js/tms-0.3.js" type="text/javascript"></script>
+		<script src="/static/js/tms_presets.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function() { 
+				$('.close').bind('click', function(){
+					$(this).parent().show().fadeOut(500);
+				});
+			}); 
+		</script>
+
+	</head>
+	<body id="page1">
+	<!--==============================header=================================-->
+		<header>
+			<div class="main">
+				<div class="wrapper">
+					<h1>
+						<a href="/">Avici</a>
+						<strong>Gestionando Servicios</strong>
+					</h1>
+					<nav>
+						<ul class="menu">							
+						    <li><a href='/'>Inicio</a></li>
+							<li><a href='/sistemas'>Servicios</a></li>
+							<li><a href='/compa'>Gráficas</a></li>
+							<li><a href="/tabla">Tablas</a></li>							
+						</ul>
+					</nav>
+				</div>
+			</div><div class="ic">Avici Web</div>
+		</header>
+	<!--==============================content================================-->
+		<section id="content">
+			<div class="main">
+				<div class="slider-wrapper">
+					<div class="slider">
+						<ul class="items">
+							<li>
+								<img src="/static/jpg/logo_avici.jpg" alt="" />
+								<strong class="banner">
+									<a class="close" href="#">x</a>
+									<strong>Avici</strong>
+									<span>Nuestro proyecto</span>
+									<b class="margin-bot">Avici proporciona información para los gestores de servicio de bicicletas en tiempo real.</b>									
+								</strong>
+							</li>
+							<li>
+								<img src="/static/jpg/logo_unir.jpg" alt="" />
+								<strong class="banner">
+									<a class="close" href="#">x</a>
+									<strong>Unir Solutions</strong>
+									<span>Nuestra empresa</span>
+									<b class="margin-bot">Desde la UNIR hemos desarrollado esta aplicación como práctica del Máster de Visual Analytics y BigData </b>									
+								</strong>
+							</li>
+							
+						</ul>
+					</div>
+					<ul class="pagination">
+						<li><a class="item-1" href=""><strong>01</strong></a></li>
+						<li><a class="item-2" href=""><strong>02</strong></a></li>
+						
+					</ul>
+				</div>
+				<div class="border-bot1 img-indent-bot">
+					<h2>Analiza los datos, revisa el estado de las estaciones, Visualiza<strong> Avici te lo pone fácil</strong></h2>
+				</div>
+				<div class="wrapper">
+					<article class="col-1">
+						<div class="indent-left">
+							<ul class="list-1">
+							{% for item in items %}
+							    <li><a href="/servicio/{{item.nombre}}">{{item.nombre}}</a></li>
+							{% endfor %}
+							</ul>
+						</div>
+					</article>
+					<article class="col-2">
+						<h3>¡Bienvenido!</h3>
+						<div class="p1">
+							
+							<div class="clear"></div>
+						</div>
+						<p class="img-indent-bot">Este proyecto ha sido elaborado en el marco de las prácticas en el master de Bigdata sin ánimo de lucro.</p>
+						
+					</article>
+					<article class="col-3">
+						<div class="indent-top">
+							<ul class="list-2">
+								<li>
+									<a class="item" href="#">Objetivo</a>
+									<span>Ofrecer información adecuada para la gestión de servicios de bicicletas</span>
+								</li>
+								<li>
+									<a class="item" href="#">Desarrollo</a>
+									<span>Python: Scrapy, JQPlot</span>
+								</li>
+								<li class="last-item">
+									<a class="item" href="#">BBDD</a>
+									<span>MongoDB</span>									
+								</li>
+							</ul>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+	<!--==============================footer=================================-->
+		<footer>
+			<div class="main">
+				<div class="wrapper border-bot2 margin-bot">
+					<article class="fcol-1">
+						<div class="indent-left">
+							<h3 class="color-1">Información</h3>
+							<ul class="list-services">
+								<li><a href="https://github.com/jorpramo/AVICIWEB">GitHub WEB</a></li>
+								<li><a class="it-2" href="https://github.com/jorpramo/AVICI">GitHub Scrape</a></li>
+								<li><a class="it-3" href="https://es.linkedin.com/pub/jorge-pradas-moscardó/16/424/37a">Linked In</a></li>								
+							</ul>
+						</div>
+					</article>
+					
+					<article class="fcol-3">
+						<h3 class="color-1">Links</h3>
+						<ul class="list-3">
+							<li><a href="http://scrapy.org/">Scrapy</a> <span> Libreria</span></li>
+							<li><a href="https://dashboard.heroku.com/">Heroku</a> <span> Despliegue</span></li>
+							<li><a href="https://mongolab.com/">Mongolab</a> <span> Base de datos</span></li>							
+						</ul>
+					</article>
+				</div>
+				
+			</div>
+		</footer>
+		<script type="text/javascript"> Cufon.now(); </script>
+		<script type="text/javascript">
+			$(window).load(function() {
+				$('.slider')._TMS({
+					duration:800,
+					easing:'easeOutQuart',
+					preset:'diagonalExpand',
+					slideshow:7000,
+					pagNums:false,
+					pagination:'.pagination',
+					banners:'fade',
+					pauseOnHover:true,
+					waitBannerAnimation:true
+				});
+			});
+		</script>
+	</body>
+</html>

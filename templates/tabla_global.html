@@ -1,0 +1,105 @@
+<html>
+<meta charset="utf-8">
+<head>
+
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="/static/css/layout.css" type="text/css" media="screen">   
+
+		<link class="include" rel="stylesheet" type="text/css"          href="/static/js/jquery.jqplot.min.css" />
+
+    <script class="include" type="text/javascript"            src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/plugins/jqplot.highlighter.js"></script>
+	
+
+	<script type="text/javascript" src="/static/js/jquery-latest.js"></script> 
+
+
+
+		
+</head>
+<body id="page1">
+	<!--==============================header=================================-->
+		<header>
+			<div class="main">
+				<div class="wrapper">
+					<h1>
+						<a href="/">Avici</a>
+						<strong>Gestionando Servicios</strong>
+					</h1>
+					<nav>
+						<ul class="menu">							
+						<li><a href='/'>Inicio</a></li>
+							<li><a href='/sistemas'>Servicios</a></li>
+							<li><a href='/compa'>Gráficas</a></li>
+							<li><a href="/tabla">Tablas</a></li>							
+						</ul>
+					</nav>
+				</div>
+			</div><div class="ic">Avici Web</div>
+		</header>
+		
+	<section id="content">
+			<div class="main">
+
+
+	<div class="border-bot1 img-indent-bot"><h2>Comparativa de Servicios</h2>
+<h1>Tabla que determina las estaciones con una media de bicicletas libres más bajas</h1>
+
+ <h2> Informe Bicicletas Disponibles</h2> </div>
+
+ <div id="here_table"></div>
+  <h2> Informe Slots Disponibles</h2> 
+ <div id="here_table2"></div>
+ 
+<script type="text/javascript">
+array=[];
+$(document).ready(function(){
+$.getJSON("/_datos_disp/", function(data) {
+console.log("dentro get");
+	array=(data.output); 
+console.log(array)
+var content = '<table id="myTable" class="tablesorter"> <thead> '
+
+content += '<tr>'
+content += '<th>Ciudad</th><th>Estacion</th><th>Total</th>';
+content += '</tr></thead><tbody> '
+for(i=0; i<array.length; i++){
+	content += '<tr>'
+    content += '<td>' + array[i].nombre + '</td><td>' + array[i].estacion + '</td><td>' + Math.round(array[i].total) + '</td>';
+	content += '</tr>'
+}
+content += "</tbody> </table>"
+
+$('#here_table').append(content);
+});
+});
+
+array=[];
+$(document).ready(function(){
+$.getJSON("/_datos_lib/", function(data) {
+console.log("dentro get");
+	array=(data.output); 
+console.log(array)
+var content = '<table id="myTable2" class="tablesorter"> <thead> '
+
+content += '<tr>'
+content += '<th>Ciudad</th><th>Estacion</th><th>Total</th>';
+content += '</tr></thead><tbody> '
+for(i=0; i<array.length; i++){
+	content += '<tr>'
+    content += '<td>' + array[i].nombre + '</td><td>' + array[i].estacion + '</td><td>' + Math.round(array[i].total) + '</td>';
+	content += '</tr>'
+}
+content += "</tbody> </table>"
+
+$('#here_table2').append(content);
+});
+});
+</script>
+
+</div>
+</section>
+</body>
+</html>
