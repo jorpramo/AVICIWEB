@@ -21,7 +21,10 @@ admin = Admin(app, name='Avici', template_mode='bootstrap3')
 # Flask views
 @app.route('/')
 def index():
-    return redirect(url_for('static', filename='index.html'))
+    items=[]
+    s=servicios()
+    items=s.LeeServicios()
+    return render_template('index.html', items=items)
 
 @app.route('/sistemas/')
 def sistemas():
@@ -35,12 +38,37 @@ def comparativa(nombre):
     coordenadas=[]
     s=servicios()
     datos=s.obtencoordenadas(nombre)
-    #datos=[{'disp': 1.0, '_id': {'nombre': 'Valenbisi', 'estacion': '006_GUILLEN_CASTRO_CON_CALLE_SAN_PEDRO_PASCUAL'}, 'lib': 11.0, 'total': 15.0},{'disp': 2.0, '_id': {'nombre': 'Madrid', 'estacion': '006_GUILLEN_CASTRO_CON_CALLE_SAN_PEDRO_PASCUAL'}, 'lib': 14.0, 'total': 15.0}]
+
     for d in datos:
         coordenadas.append([d['lib'],d['disp']])
-    print(coordenadas)
+    return jsonify(output=coordenadas)
+
+@app.route('/_datos_disp/')
+def disponibles():
+    coordenadas=[]
+    s=servicios()
+    datos=s.obtendatos_disp()
+    #datos=[{'disp': 1.0, 'nombre': 'Valenbisi', 'estacion': '006_GUILLEN_CASTRO_CON_CALLE_SAN_PEDRO_PASCUAL', 'lib': 11.0, 'total': 15.0},{'disp': 2.0, '_id': {'nombre': 'Madrid', 'estacion': '006_GUILLEN_CASTRO_CON_CALLE_SAN_PEDRO_PASCUAL'}, 'lib': 14.0, 'total': 15.0}]
+
+    for d in datos:
+        coordenadas.append({'nombre': d['_id']['nombre'],'estacion': d['_id']['estacion'],'total':d['total']})
+    #print(coordenadas)
+    return jsonify(output=coordenadas)
+
+@app.route('/_datos_lib/')
+def libres():
+    coordenadas=[]
+    s=servicios()
+    datos=s.obtendatos_lib()
+    #datos=[{'disp': 1.0, '_id': {'nombre': 'Valenbisi', 'estacion': '006_GUILLEN_CASTRO_CON_CALLE_SAN_PEDRO_PASCUAL'}, 'lib': 11.0, 'total': 15.0},{'disp': 2.0, '_id': {'nombre': 'Madrid', 'estacion': '006_GUILLEN_CASTRO_CON_CALLE_SAN_PEDRO_PASCUAL'}, 'lib': 14.0, 'total': 15.0}]
+    for d in datos:
+        coordenadas.append({'nombre': d['_id']['nombre'],'estacion': d['_id']['estacion'],'total':d['total']})
 
     return jsonify(output=coordenadas)
+
+@app.route('/tabla/')
+def tabla_global():
+    return render_template('tabla_global.html')
 
 @app.route('/compa/')
 def Graph_global():

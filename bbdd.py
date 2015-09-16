@@ -32,9 +32,24 @@ class servicios:
     def obtencoordenadas(self, nombre=''):
         client = pymongo.MongoClient(MONGODB_URI)
         db = client.avici
-        datos=db.datos
+        datos=db.datos_actual
 
         pipeline = [ {"$match":{"nombre": nombre}},{ "$group": { "_id": { "nombre": "$nombre", "estacion": "$estacion" }, "disp": {"$avg": "$disponibles" }, "lib": { "$avg": "$libres" }, "total": { "$avg": "$total" } } } ]
 
         return list(datos.aggregate(pipeline))
 
+    def obtendatos_disp(self):
+        client = pymongo.MongoClient(MONGODB_URI)
+        db = client.avici
+        datos=db.datos
+        pipeline = [ { "$group": { "_id": { "nombre": "$nombre", "estacion": "$estacion" }, "total": { "$avg": "$disponibles" } } },{"$sort":{"total":1}},{ "$match" : { "total":{"$ne":  0 } }}, { "$limit": 10 } ]
+
+        return list(datos.aggregate(pipeline))
+
+    def obtendatos_lib(self):
+        client = pymongo.MongoClient(MONGODB_URI)
+        db = client.avici
+        datos=db.datos
+        pipeline = [ { "$group": { "_id": { "nombre": "$nombre", "estacion": "$estacion" }, "total": { "$avg": "$libres" } } },{"$sort":{"total":1}},{ "$match" : { "total":{"$ne":  0 } }}, { "$limit": 10 } ]
+
+        return list(datos.aggregate(pipeline))
