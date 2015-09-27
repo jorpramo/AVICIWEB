@@ -42,8 +42,8 @@
 
 	<div class="border-bot1 img-indent-bot"><h2>Comparativa de Servicios</h2>
 <h1>Estos gráficos representan para cada servicio la media de disponibilidad y slots libres de cada estación. La situación ideal es que estuvieran en el centro del gráfico.
-
- <h2> Informe </h2> </h1></div>
+</h1></div>
+ <h2> Informe </h2>
 
 {% for item in items %}
     <div id={{item.nombre}} style="position: relative; top:50px; height:300px; width:650px;"></div>
@@ -53,6 +53,8 @@
                $.jqplot('{{item.nombre}}', [data.output], {
                     title:'Estado de las estaciones: {{item.nombre}}',
 					seriesDefaults: {showLine:false},
+					width: 600,
+
 					axesDefaults: 
 { 
     min: 0,  max:30,
